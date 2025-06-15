@@ -67,3 +67,6 @@ dump.rdb
 .DS_Store
 
 .idea/
+
+*storybook.log
+storybook-static
