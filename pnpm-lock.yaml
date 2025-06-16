@@ -35,6 +35,9 @@ importers:
       d3-shape:
         specifier: ^2.0.0
         version: 2.1.0
+      d3-time:
+        specifier: ^3.1.0
+        version: 3.1.0
       d3-time-format:
         specifier: ^3.0.0
         version: 3.0.0
@@ -47,6 +50,9 @@ importers:
       react-dom:
         specifier: ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
+      react-virtualized-auto-sizer:
+        specifier: ^1.0.26
+        version: 1.0.26(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     devDependencies:
       '@storybook/addon-a11y':
         specifier: ^9.0.0-alpha.17
@@ -87,6 +93,9 @@ importers:
       '@types/d3-shape':
         specifier: ^2.0.0
         version: 2.1.7
+      '@types/d3-time':
+        specifier: ^3.0.4
+        version: 3.0.4
       '@types/d3-time-format':
         specifier: ^3.0.0
         version: 3.0.4
@@ -679,6 +688,9 @@ packages:
   '@types/d3-time@2.1.4':
     resolution: {integrity: sha512-BTfLsxTeo7yFxI/haOOf1ZwJ6xKgQLT9dCp+EcmQv87Gox6X+oKl4mLKfO6fnWm3P22+A6DknMNEZany8ql2Rw==}
 
+  '@types/d3-time@3.0.4':
+    resolution: {integrity: sha512-yuzZug1nkAAaBlBBikKZTgzCeA+k1uy4ZFwWANOfKw5z5LRhV0gNA7gNkKm7HoK+HRN0wX3EkxGk0fpbWhmB7g==}
+
   '@types/doctrine@0.0.9':
     resolution: {integrity: sha512-eOIHzCUSH7SMfonMG1LsC2f8vxBFtho6NGBznK41R84YzPuvSBzrhEps33IsQiOW9+VL6NQ9DbjQJznk/S4uRA==}
 
@@ -1007,6 +1019,10 @@ packages:
 
   d3-time@2.1.1:
     resolution: {integrity: sha512-/eIQe/eR4kCQwq7yxi7z4c6qEXf2IYGcjoWB5OOQy4Tq9Uv39/947qlDcN2TLkiTzQWzvnsuYPB9TrWaNfipKQ==}
+
+  d3-time@3.1.0:
+    resolution: {integrity: sha512-VqKjzBLejbSMT4IgbmVgDjpkYrNWUYJnbCGo874u7MMKIWsILRX+OpX/gTk8MqjpT1A/c6HY2dCA77ZN0lkQ2Q==}
+    engines: {node: '>=12'}
 
   d3-timer@2.0.0:
     resolution: {integrity: sha512-TO4VLh0/420Y/9dO3+f9abDEFYeCUr2WZRlxJvbp4HPTQcSylXNiL6yZa9FIUvV1yRiFufl1bszTCLDqv9PWNA==}
@@ -1789,6 +1805,12 @@ packages:
 
   react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
+
+  react-virtualized-auto-sizer@1.0.26:
+    resolution: {integrity: sha512-CblNyiNVw2o+hsa5/49NH2ogGxZ+t+3aweRvNSq7TVjDIlwk7ir4lencEg5HxHeSzwNarSkNkiu0qJSOXtxm5A==}
+    peerDependencies:
+      react: ^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   react@19.1.0:
     resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
@@ -2672,6 +2694,8 @@ snapshots:
 
   '@types/d3-time@2.1.4': {}
 
+  '@types/d3-time@3.0.4': {}
+
   '@types/doctrine@0.0.9': {}
 
   '@types/estree@1.0.7': {}
@@ -3054,6 +3078,10 @@ snapshots:
       d3-time: 2.1.1
 
   d3-time@2.1.1:
+    dependencies:
+      d3-array: 2.12.1
+
+  d3-time@3.1.0:
     dependencies:
       d3-array: 2.12.1
 
@@ -3964,6 +3992,11 @@ snapshots:
   react-is@16.13.1: {}
 
   react-is@17.0.2: {}
+
+  react-virtualized-auto-sizer@1.0.26(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
 
   react@19.1.0: {}
 
