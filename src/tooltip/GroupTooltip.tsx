@@ -20,6 +20,7 @@ export interface GroupTooltipProps {
         yAccessor: (data: any) => number;
         valueFill?: string;
         withShape?: boolean;
+        displayFormat?: (value: number) => string;
     }[];
     readonly origin: [number, number];
     readonly position?: "topRight" | "bottomLeft" | "bottomRight";
@@ -103,7 +104,7 @@ export class GroupTooltip extends React.Component<GroupTooltipProps> {
 
         const singleTooltip = options.map((each, idx) => {
             const yValue = currentItem && each.yAccessor(currentItem);
-            const yDisplayValue = yValue ? displayFormat(yValue) : displayInit;
+            const yDisplayValue = yValue ? (each.displayFormat ? each.displayFormat(yValue) : displayFormat(yValue)) : displayInit;
 
             const orig: () => [number, number] = () => {
                 if (layout === "horizontal" || layout === "horizontalRows") {
