@@ -15,7 +15,7 @@ export class Annotate extends React.Component<AnnotateProps> {
     };
 
     public render() {
-        return <GenericChartComponent svgDraw={this.renderSVG} drawOn={["pan"]} />;
+        return <GenericChartComponent svgDraw={this.renderSVG} drawOn={["mousemove", "pan", "zoom"]} />;
     }
 
     private readonly renderSVG = (moreProps: any) => {
