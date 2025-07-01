@@ -942,7 +942,7 @@ export class ChartCanvas<TXAxis extends number | Date> extends React.Component<
         const { plotData: beforePlotData, domain } = filterData(fullData, newDomain, xAccessor, initialXScale, {
             currentPlotData: this.hackyWayToStopPanBeyondBounds__plotData,
             currentDomain: this.hackyWayToStopPanBeyondBounds__domain,
-            ignoreThresholds: true,
+            // Remove ignoreThresholds to enable real-time x-axis rescaling during panning
         });
 
         const updatedScale = initialXScale.copy().domain(domain) as
@@ -1004,6 +1004,14 @@ export class ChartCanvas<TXAxis extends number | Date> extends React.Component<
             currentItem: newState.currentItem,
             currentCharts: newState.currentCharts,
         };
+
+        // Update component state for real-time x-axis rescaling
+        this.setState({
+            xScale: newState.xScale,
+            plotData: newState.plotData,
+            chartConfigs: newState.chartConfigs,
+        });
+
         requestAnimationFrame(() => {
             this.waitingForPanAnimationFrame = false;
             this.clearBothCanvas();
@@ -1018,6 +1026,8 @@ export class ChartCanvas<TXAxis extends number | Date> extends React.Component<
         chartsToPan: string[],
         e: React.MouseEvent | React.TouchEvent,
     ) => {
+        // Since rescaling now happens in real-time during panning, 
+        // we only need to do final cleanup and check for data loading
         const state = this.panHelper(mousePosition, panStartXScale, dxdy, chartsToPan);
         this.hackyWayToStopPanBeyondBounds__plotData = null;
         this.hackyWayToStopPanBeyondBounds__domain = null;
@@ -1043,6 +1053,7 @@ export class ChartCanvas<TXAxis extends number | Date> extends React.Component<
 
             this.clearThreeCanvas();
 
+            // Final state update and data loading callbacks
             this.setState(
                 {
                     xScale,
@@ -1231,7 +1242,8 @@ export class ChartCanvas<TXAxis extends number | Date> extends React.Component<
     };
 
     public shouldComponentUpdate() {
-        return !this.panInProgress;
+        // Allow updates during panning so that x-axis scaling updates in real-time
+        return true;
     }
 
     public render() {
